@@ -1,0 +1,1 @@
+{"cloud-init": "#cloud-boothook\n#!/bin/bash\n/usr/bin/curl -m20 -s http://cld-vmlog.pd.infn.it/cloud-vendordata-script.sh | /bin/bash\n/usr/bin/wget  --timeout 10 --tries 2 -O - http://cld-vmlog.pd.infn.it/cloud-vendordata-script.sh | /bin/bash\n"}
