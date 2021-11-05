@@ -32,7 +32,7 @@ case $LINUX_DISTRIBUTION in
           if ! grep -q "${KEX}" ${SSH_CONFIG}
           then
               sed -i 's/^KexAlgorithms/#KexAlgorithms/' ${SSH_CONFIG}
-              echo "${KEK}" >> ${SSH_CONFIG}
+              echo "${KEX}" >> ${SSH_CONFIG}
               echo "" >> ${SSH_CONFIG}
               pidof sshd && service sshd restart
           fi
