@@ -46,4 +46,8 @@ esac
 
 logger "Vendor data: configure MTU for docker"
 
+if ! -e /etc/docker
+then
+  mkdir /etc/docker
+fi
 echo { \"mtu\": 1450 } > /etc/docker/daemon.json
