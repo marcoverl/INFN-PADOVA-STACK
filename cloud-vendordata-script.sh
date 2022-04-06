@@ -43,3 +43,7 @@ case $LINUX_DISTRIBUTION in
           logger "$LINUX_DISTRIBUTION not managed by this script"
           ;;
 esac
+
+logger "Vendor data: configure MTU for docker"
+
+echo { \"mtu\": 1450 } > /etc/docker/daemon.json
