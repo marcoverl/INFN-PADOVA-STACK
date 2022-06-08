@@ -21,6 +21,13 @@ case $LINUX_DISTRIBUTION in
      Scientific)
           ;;
      RedHat)
+          # Disable system wide crypto policy for sshd if is RHEL 8 based distribution
+          if grep -q 8 /etc/redhat-release ; then
+            if tail -n1 /etc/sysconfig/sshd | grep -q "# CRYPTO_POLICY=" ; then
+               echo CRYPTO_POLICY= >> /etc/sysconfig/sshd
+               logger "SSHD disable system wide crypto policy for sshd in RHEL8 based distributions"
+            fi
+          fi
           # Disable weak ssh ciphers on RedHat systems and restart ssh if needed
           if ! grep -q "${CIPHERS}" ${SSH_CONFIG}
           then
